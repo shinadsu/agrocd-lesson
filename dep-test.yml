@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-test-my-world
+  namespace: default
+  labels:
+    app: my-world
+    env: staging
+spec:
+  selector:
+    matchLabels:
+      app: my-world
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-world
+    spec:
+      containers:
+      - name: my-world
+        image: nginx:latest
+        ports:
+        - containerPort: 80
